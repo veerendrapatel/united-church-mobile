@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Container, Text } from "native-base";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
@@ -24,18 +24,13 @@ export default function App() {
     loadFonts();
   }, [0]);
 
+  if (!isReady) {
+    return <AppLoading />;
+  }
+
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
