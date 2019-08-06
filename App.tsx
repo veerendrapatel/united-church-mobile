@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Container, Text } from "native-base";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
+// import HomeScreen from "./screens/HomeScreen";
+import DefaultScreen from "./screens/DefaultScreen";
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -10,8 +11,6 @@ export default function App() {
   useEffect(() => {
     const loadFonts = async () => {
       await Font.loadAsync({
-        Roboto: require("native-base/Fonts/Roboto.ttf"),
-        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
         Montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
         "Montserrat-SemiBold": require("./assets/fonts/Montserrat-SemiBold.ttf"),
         "Montserrat-Medium": require("./assets/fonts/Montserrat-Medium.ttf"),
@@ -28,9 +27,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return (
-    <Container>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </Container>
-  );
+  return <DefaultScreen />;
 }
