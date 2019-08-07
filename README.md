@@ -14,6 +14,10 @@ A mobile app to allow sharing across churches
 - [Back End Repo](https://github.com/sopherapps/united-church-api)
 - [Mockups](https://www.figma.com/file/S3KzYKRmZxBHns5UHa8vzk1h/UnitedChurch?node-id=0%3A1)
 
+## Development
+
+You will have to setup your own `app.json` and `config` folder
+
 ## License
 
 Copyright (c) 2019
