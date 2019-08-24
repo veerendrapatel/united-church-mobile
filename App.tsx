@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
-// import HomeScreen from "./screens/HomeScreen";
 import DefaultScreen from "./screens/DefaultScreen";
 
 export default function App() {
