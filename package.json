@@ -12,20 +12,18 @@
     "updateSnapshots": "jest -u --coverage=false"
   },
   "dependencies": {
-    "@feathersjs/feathers": "^3.3.1",
-    "@feathersjs/socketio-client": "^1.2.1",
     "expo": "^34.0.1",
     "expo-font": "^6.0.1",
     "expo-google-app-auth": "^6.0.0",
     "expo-linear-gradient": "^6.0.0",
+    "ra-feathersjs-oauth": "0.0.5",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-gesture-handler": "^1.3.0",
     "react-native-reanimated": "^1.1.0",
     "react-native-web": "^0.11.4",
-    "react-navigation": "^3.11.1",
-    "socket.io-client": "2.1.1"
+    "react-navigation": "^3.11.1"
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
