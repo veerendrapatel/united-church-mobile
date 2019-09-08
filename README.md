@@ -16,7 +16,9 @@ A mobile app to allow sharing across churches
 
 ## Development
 
-You will have to setup your own `app.json` and `config` folder
+You will have to setup your own `app.json` and `config` folder.
+
+- You can base your `app.json` on the [`app.example.json` file](./app.example.json)
 
 ## License
 
