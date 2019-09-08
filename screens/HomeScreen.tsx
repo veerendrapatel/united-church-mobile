@@ -5,6 +5,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import Theme from "../config/theme";
 import getApiConnector from "../services/get-api-connector";
 import { apiUrl, apiConfig } from "../config/api";
+import { googleLogin } from "../services/google-auth";
+import googleAuth from "../config/google-auth";
 
 const apiConnector = getApiConnector(apiUrl, apiConfig);
 
@@ -12,7 +14,19 @@ export default function HomeScreen(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const goToLogin = () => {
-    props.navigation.navigate("Login", { apiConnector });
+    // props.navigation.navigate("Login", { apiConnector });
+    // @ts-ignore
+    googleLogin(googleAuth).then((token: string) => {
+      setIsAuthenticating(true);
+      apiConnector.client
+        .authenticate({ strategy: "google", access_token: token })
+        .then(() => setIsAuthenticated(true))
+        .catch((error: any) => {
+          console.log(error.message);
+          setIsAuthenticated(false);
+        })
+        .finally(() => setIsAuthenticating(false));
+    });
   };
 
   useEffect(() => {

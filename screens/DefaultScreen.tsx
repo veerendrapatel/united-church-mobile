@@ -6,7 +6,6 @@ import {
   createAppContainer
 } from "react-navigation";
 import IntroScreen from "./IntroScreen";
-import LoginScreen from "./LoginScreen";
 import NotificationsScreen from "./NotificationsScreen";
 import AddPostScreen from "./AddPostScreen";
 import AccountScreen from "./AccountScreen";
@@ -20,7 +19,6 @@ const AppStack = createBottomTabNavigator({
   Account: AccountScreen
 });
 const AuthStack = createStackNavigator({
-  Login: LoginScreen,
   Intro: IntroScreen
 });
 

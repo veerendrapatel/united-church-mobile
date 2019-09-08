@@ -2,7 +2,10 @@ import * as Google from "expo-google-app-auth";
 
 export const googleLogin = async (config: Google.GoogleLogInConfig) => {
   const result = await Google.logInAsync(config);
-  return result.type === "success" ? result.accessToken : undefined;
+  if (result.type === "success") {
+    return result.accessToken;
+  }
+  throw new Error("Logging in was cancelled.");
 };
 
 export const googleLogout = async (
