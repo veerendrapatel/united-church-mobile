@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { AppLoading } from "expo";
 import { LinearGradient } from "expo-linear-gradient";
 import Theme from "../config/theme";
 import getApiConnector from "../services/get-api-connector";
@@ -8,14 +9,27 @@ import { apiUrl, apiConfig } from "../config/api";
 const apiConnector = getApiConnector(apiUrl, apiConfig);
 
 export default function HomeScreen(props) {
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const goToLogin = () => {
     props.navigation.navigate("Login", { apiConnector });
   };
 
-  try {
-    apiConnector.client.reAuthenticate();
-    props.navigation.navigate("NewsFeed", { apiConnector });
-  } catch (error) {
+  useEffect(() => {
+    setIsAuthenticating(true);
+
+    apiConnector.client
+      .reAuthenticate()
+      .then(() => setIsAuthenticated(true))
+      .catch(() => setIsAuthenticated(false))
+      .finally(() => setIsAuthenticating(false));
+  }, [0]);
+
+  if (isAuthenticating) {
+    return <AppLoading />;
+  } else if (isAuthenticated) {
+    return props.navigation.navigate("NewsFeed", { apiConnector });
+  } else {
     return (
       <View style={styles.container}>
         <View style={[styles.container, { marginTop: "20%" }]}>

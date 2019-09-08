@@ -4,6 +4,7 @@ import {
   createFeathersDataProvider
 } from "ra-feathersjs-oauth";
 import { IFeathersClient } from "ra-feathersjs-oauth/lib/types/feathers-client";
+import { AsyncStorage } from "react-native";
 
 const actions = {
   AUTH_LOGIN: "AUTH_LOGIN",
@@ -25,7 +26,8 @@ const actions = {
 
 export const makeClient = (apiUrl: string) =>
   createFeathersClient(apiUrl, {
-    storage: localStorage,
+    // @ts-ignore
+    storage: AsyncStorage,
     locationKey: `united-church-token${apiUrl}`
   });
 
